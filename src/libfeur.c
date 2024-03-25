@@ -4,8 +4,12 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#define NATIVE_MALLOC 0
+
 void* malloc(size_t size) {
     write(2, "FEUR\n", 5);
     void* (*libc_malloc)(size_t) = dlsym(RTLD_NEXT, "malloc");
-    return libc_malloc(size);
+    if (NATIVE_MALLOC)
+        return libc_malloc(size);
+    return NULL;
 }
