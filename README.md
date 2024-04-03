@@ -1,5 +1,8 @@
 ## libfeur
 
+### Description
+Quoi?
+
 ### Setup
 ```bash
 make
